@@ -1,0 +1,31 @@
+{
+  "fixture": {
+    "to":"+1234567890"
+  },
+  "every8d": {
+    "UID": "uid",
+    "PWD": "pws"
+  },
+  "mitake": {
+    "username": "username",
+    "password": "password"
+  },
+  "nexmo": {
+    "api_key": "api_key",
+    "api_secret": "api_secret",
+    "from": "from"
+  },
+  "smsget": {
+    "username": "username",
+    "password": "password"
+  },
+  "kotsms": {
+    "username": "username",
+    "password": "password"
+  },
+  "twilio": {
+    "AccountSid": "AccountSid",
+    "AuthToken": "AuthToken",
+    "from": "from"
+  }
+}

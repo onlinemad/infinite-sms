@@ -1,0 +1,33 @@
+{
+  "name": "infinite-sms",
+  "version": "0.0.1",
+  "description": "SMS library for multi providers",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onlinemad/infinite-sms.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/onlinemad/infinite-sms/issues"
+  },
+  "homepage": "https://github.com/onlinemad/infinite-sms#readme",
+  "dependencies": {
+    "debug": "^2.2.0",
+    "iconv-lite": "^0.4.13",
+    "request": "^2.74.0",
+    "require-all": "^2.0.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2",
+    "should": "^11.1.0"
+  }
+}
