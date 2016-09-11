@@ -12,6 +12,7 @@ describe('twilio', function() {
     }
     twilio.send(payload, function(result) {
       expect(result.status).to.equal('ok');
+      expect(result.id).to.exist;
       done();
     });
   });

@@ -12,12 +12,13 @@ describe('kotsms', function() {
     }
     kotsms.send(payload, function(result) {
       expect(result.status).to.equal('ok');
+      expect(result.id).to.exist;
       done();
     });
   });
   it('missing destination', function(done) {
     var payload = {
-      to: '',
+      to: '+886',
       text: '[operator] test from kotsms. kotsms 測試簡訊. time ' + Date.now()
     }
     kotsms.send(payload, function(result) {

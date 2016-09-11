@@ -12,12 +12,13 @@ describe('smsget', function() {
     }
     smsget.send(payload, function(result) {
       expect(result.status).to.equal('ok');
+      expect(result.id).to.exist;
       done();
     });
   });
   it('missing destination', function(done) {
     var payload = {
-      to: '',
+      to: '+886',
       text: '[operator] test from smsget. smsget 測試簡訊. time ' + Date.now()
     }
     smsget.send(payload, function(result) {

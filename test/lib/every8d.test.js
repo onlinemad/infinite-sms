@@ -12,6 +12,7 @@ describe('every8d', function() {
     }
     every8d.send(payload, function(result) {
       expect(result.status).to.equal('ok');
+      expect(result.id).to.exist;
       done();
     });
   });
