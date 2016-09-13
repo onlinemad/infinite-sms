@@ -1,8 +1,8 @@
 var expect = require('chai').expect;
 
-var nexmo = require('../../index').nexmo;
+var Nexmo = require('../../index').nexmo;
 
-var nexmo = new nexmo(config.nexmo);
+var nexmo = new Nexmo(config.nexmo);
 
 describe('nexmo', function() {
   it.skip('success case', function(done) {
@@ -27,7 +27,7 @@ describe('nexmo', function() {
     });
   });
   it('receipt', function(done) {
-    var payload = { 
+    var payload = {
       msisdn: '886918361763',
       to: '889989666777',
       'network-code': '46697',
@@ -38,11 +38,10 @@ describe('nexmo', function() {
       'err-code': '0',
       'message-timestamp': '2016-09-11 10:17:39'
     }
-    nexmo.receipt(payload, function(result) {
-      expect(result.id).to.equal('06000000449DC552');
-      expect(result.provider).to.equal('nexmo');
-      expect(result.raw).to.deep.equal(payload);
-      done();
-    });
+    var result = Nexmo.receipt(payload);
+    expect(result.id).to.equal('06000000449DC552');
+    expect(result.provider).to.equal('nexmo');
+    expect(result.raw).to.deep.equal(payload);
+    done();
   });
 })
