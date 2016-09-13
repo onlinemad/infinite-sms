@@ -1,8 +1,8 @@
 var expect = require('chai').expect;
 
-var smsget = require('../../index').smsget;
+var Smsget = require('../../index').smsget;
 
-var smsget = new smsget(config.smsget);
+var smsget = new Smsget(config.smsget);
 
 describe('smsget', function() {
   it('send', function(done) {
@@ -25,5 +25,16 @@ describe('smsget', function() {
       expect(result.status).to.equal('failed');
       done();
     });
+  });
+  it('receipt', function(done) {
+    var payload = {
+      sms_id: '1783822',
+      content: '0987566339|$0040B0FA7|2016-09-13 05:07:55|DELIVRD'
+    }
+    var result = Smsget.receipt(payload);
+    expect(result.id).to.equal('1783822');
+    expect(result.provider).to.equal('smsget');
+    expect(result.raw).to.deep.equal(payload);
+    done();
   });
 })
