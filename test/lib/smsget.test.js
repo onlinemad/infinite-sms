@@ -34,6 +34,7 @@ describe('smsget', function() {
     var result = Smsget.receipt(payload);
     expect(result.id).to.equal('1783822');
     expect(result.provider).to.equal('smsget');
+    expect(result.status).to.equal('DELIVRD');
     expect(result.raw).to.deep.equal(payload);
     done();
   });

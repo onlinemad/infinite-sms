@@ -5,7 +5,7 @@ var Nexmo = require('../../index').nexmo;
 var nexmo = new Nexmo(config.nexmo);
 
 describe('nexmo', function() {
-  it.skip('success case', function(done) {
+  it('success case', function(done) {
     var payload = {
       to: config.fixture.to,
       text: '[operator] test from nexmo. nexmo 測試簡訊. time ' + Date.now()
@@ -41,6 +41,7 @@ describe('nexmo', function() {
     var result = Nexmo.receipt(payload);
     expect(result.id).to.equal('06000000449DC552');
     expect(result.provider).to.equal('nexmo');
+    expect(result.status).to.equal('delivered');
     expect(result.raw).to.deep.equal(payload);
     done();
   });
