@@ -26,6 +26,19 @@ describe('nexmo', function() {
       done();
     });
   });
+  it('optional parameter', function(done) {
+    var payload = {
+      to: config.fixture.to,
+      text: '[operator] test from nexmo. nexmo 測試簡訊. time ' + Date.now(),
+      options: {
+        callback: 'https://yourdimain/sms/callback'
+      }
+    }
+    nexmo.send(payload, function(result) {
+      expect(result.status).to.equal('failed');
+      done();
+    });
+  });
   it('receipt', function(done) {
     var payload = {
       msisdn: '886918361763',
