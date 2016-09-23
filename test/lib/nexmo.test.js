@@ -8,7 +8,7 @@ describe('nexmo', function() {
   it('success case', function(done) {
     var payload = {
       to: config.fixture.to,
-      text: '[operator] test from nexmo. nexmo 測試簡訊. time ' + Date.now()
+      text: '[operator] test from nexmo. nexmo 測試簡訊 テスト. time ' + Date.now()
     }
     nexmo.send(payload, function(result) {
       expect(result.status).to.equal('ok');
@@ -19,7 +19,7 @@ describe('nexmo', function() {
   it('missing destination', function(done) {
     var payload = {
       to: '',
-      text: '[operator] test from nexmo. nexmo 測試簡訊. time ' + Date.now()
+      text: '[operator] test from nexmo. nexmo 測試簡訊 テスト. time ' + Date.now()
     }
     nexmo.send(payload, function(result) {
       expect(result.status).to.equal('failed');
@@ -29,19 +29,20 @@ describe('nexmo', function() {
   it('optional parameter', function(done) {
     var payload = {
       to: config.fixture.to,
-      text: '[operator] test from nexmo. nexmo 測試簡訊. time ' + Date.now(),
+      text: '[operator] test from nexmo. nexmo 測試簡訊 テスト. time ' + Date.now(),
       options: {
         callback: 'https://yourdimain/sms/callback'
       }
     }
     nexmo.send(payload, function(result) {
-      expect(result.status).to.equal('failed');
+      expect(result.status).to.equal('ok');
+      expect(result.id).to.exist;
       done();
     });
   });
   it('receipt', function(done) {
     var payload = {
-      msisdn: '886918361763',
+      msisdn: '886919919919',
       to: '889989666777',
       'network-code': '46697',
       messageId: '06000000449DC552',
