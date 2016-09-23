@@ -31,7 +31,7 @@ describe('nexmo', function() {
       to: config.fixture.to,
       text: '[operator] test from nexmo. nexmo 測試簡訊 テスト. time ' + Date.now(),
       options: {
-        callback: 'https://yourdimain/sms/callback'
+        callback: 'https://yourdimain/nexmo/callback'
       }
     }
     nexmo.send(payload, function(result) {

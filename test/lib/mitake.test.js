@@ -31,7 +31,7 @@ describe('mitake', function() {
       to: config.fixture.to,
       text: '[operator] test from mitake. mitake 測試簡訊 テスト. time ' + Date.now(),
       options: {
-        response: 'https://operator.sleepnova.org/api/operator/callback_stub'
+        response: 'https://yourdimain/mitake/callback'
       }
     }
     mitake.send(payload, function(result) {
