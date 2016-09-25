@@ -8,7 +8,7 @@ describe('nexmo', function() {
   it('success case', function(done) {
     var payload = {
       to: config.fixture.to,
-      text: '[operator] test from nexmo. nexmo 測試簡訊 テスト. time ' + Date.now()
+      text: '[operator] test for nexmo 測試簡訊 テスト 😀 time ' + Date.now()
     }
     nexmo.send(payload, function(result) {
       expect(result.status).to.equal('ok');
@@ -19,7 +19,7 @@ describe('nexmo', function() {
   it('missing destination', function(done) {
     var payload = {
       to: '',
-      text: '[operator] test from nexmo. nexmo 測試簡訊 テスト. time ' + Date.now()
+      text: '[operator] test from nexmo 測試簡訊 テスト 😀 time ' + Date.now()
     }
     nexmo.send(payload, function(result) {
       expect(result.status).to.equal('failed');
@@ -29,7 +29,7 @@ describe('nexmo', function() {
   it('optional parameter', function(done) {
     var payload = {
       to: config.fixture.to,
-      text: '[operator] test from nexmo. nexmo 測試簡訊 テスト. time ' + Date.now(),
+      text: '[operator] test from nexmo 測試簡訊 テスト 😀 time ' + Date.now(),
       options: {
         callback: 'https://yourdimain/nexmo/callback'
       }

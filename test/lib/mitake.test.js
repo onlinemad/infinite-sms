@@ -8,7 +8,7 @@ describe('mitake', function() {
   it('success case', function(done) {
     var payload = {
       to: config.fixture.to,
-      text: '[operator] test from mitake. mitake 測試簡訊 テスト. time ' + Date.now()
+      text: '[operator] test for mitake. 測試簡訊 テスト 😀 time ' + Date.now()
     }
     mitake.send(payload, function(result) {
       expect(result.status).to.equal('ok');
@@ -19,7 +19,7 @@ describe('mitake', function() {
   it('missing destination', function(done) {
     var payload = {
       to: '+886',
-      text: '[operator] test from mitake. mitake 測試簡訊 テスト. time ' + Date.now()
+      text: '[operator] test from mitake 測試簡訊 テスト 😀 time ' + Date.now()
     }
     mitake.send(payload, function(result) {
       expect(result.status).to.equal('failed');
@@ -29,7 +29,7 @@ describe('mitake', function() {
   it('optional parameter', function(done) {
     var payload = {
       to: config.fixture.to,
-      text: '[operator] test from mitake. mitake 測試簡訊 テスト. time ' + Date.now(),
+      text: '[operator] test from mitake 測試簡訊 テスト 😀 time ' + Date.now(),
       options: {
         response: 'https://yourdimain/mitake/callback'
       }
@@ -47,7 +47,7 @@ describe('mitake', function() {
       donetime: '20160923141415',
       statusstr: 'DELIVRD',
       statuscode: '0',
-      StatusFlag: '4' 
+      StatusFlag: '4'
     }
     var result = Mitake.receipt(payload);
     expect(result.id).to.equal('$0005EF6C0');

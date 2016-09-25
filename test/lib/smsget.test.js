@@ -8,7 +8,7 @@ describe('smsget', function() {
   it('success case', function(done) {
     var payload = {
       to: config.fixture.to,
-      text: '[operator] test from smsget. smsget 測試簡訊 テスト. time ' + Date.now()
+      text: '[operator] test for smsget 測試簡訊 テスト time ' + Date.now()
     }
     smsget.send(payload, function(result) {
       expect(result.status).to.equal('ok');
@@ -19,7 +19,7 @@ describe('smsget', function() {
   it('missing destination', function(done) {
     var payload = {
       to: '+886',
-      text: '[operator] test from smsget. smsget 測試簡訊 テスト. time ' + Date.now()
+      text: '[operator] test for smsget 測試簡訊 テスト time ' + Date.now()
     }
     smsget.send(payload, function(result) {
       expect(result.status).to.equal('failed');
@@ -32,7 +32,7 @@ describe('smsget', function() {
     var hour = ('00' + (today.getHours() + 1).toString()).slice(-2);
     var payload = {
       to: config.fixture.to,
-      text: '[operator] test from smsget. smsget 測試簡訊 テスト. time ' + Date.now(),
+      text: '[operator] test for smsget 測試簡訊 テスト time ' + Date.now(),
       options: {
         method: '2',
         send_date: send_date,
