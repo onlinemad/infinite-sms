@@ -4,7 +4,7 @@ var Twilio = require('../../index').twilio;
 
 var twilio = new Twilio(config.twilio);
 
-describe.only('twilio', function() {
+describe('twilio', function() {
   it('success case', function(done) {
     var payload = {
       to: config.fixture.to,
