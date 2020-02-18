@@ -8,12 +8,18 @@
   },
   "mitake": {
     "username": "username",
-    "password": "password"
+    "password": "password",
+    "options": {
+      "response": "https://yourdimain/mitake/callback"
+    }
   },
   "nexmo": {
     "api_key": "api_key",
     "api_secret": "api_secret",
-    "from": "from"
+    "from": "from",
+    "options": {
+      "callback": "https://yourdomain/nexmo/callback"
+    }
   },
   "smsget": {
     "username": "username",
@@ -26,6 +32,9 @@
   "twilio": {
     "AccountSid": "AccountSid",
     "AuthToken": "AuthToken",
-    "from": "from"
+    "from": "from",
+    "options": {
+      "StatusCallback": "https://yourdomain/twilio/callback"
+    }
   }
 }

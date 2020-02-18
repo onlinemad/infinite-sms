@@ -1,47 +1,47 @@
-var expect = require('chai').expect;
+const expect = require('chai').expect
 
-var Nexmo = require('../../index').nexmo;
+const Nexmo = require('../../index').nexmo
 
-var nexmo = new Nexmo(config.nexmo);
+const nexmo = new Nexmo(config.nexmo)
 
-describe('nexmo', function() {
-  it('success case', function(done) {
-    var payload = {
+describe('nexmo', () => {
+  it('success case', (done) => {
+    const payload = {
       to: config.fixture.to,
-      text: '[operator] test for nexmo 測試簡訊 テスト 😀 time ' + Date.now()
+      text: `[operator] test for nexmo 測試簡訊 テスト 😀 time ${now()}`
     }
-    nexmo.send(payload, function(result) {
-      expect(result.status).to.equal('ok');
-      expect(result.id).to.exist;
-      done();
-    });
-  });
-  it('missing destination', function(done) {
-    var payload = {
+    nexmo.send(payload, (result) => {
+      expect(result.status).to.equal('ok')
+      expect(result.id).to.exist
+      done()
+    })
+  })
+  it('missing destination', (done) => {
+    const payload = {
       to: '',
-      text: '[operator] test from nexmo 測試簡訊 テスト 😀 time ' + Date.now()
+      text: `[operator] test from nexmo 測試簡訊 テスト 😀 time ${now()}`
     }
-    nexmo.send(payload, function(result) {
-      expect(result.status).to.equal('failed');
-      done();
-    });
-  });
-  it('optional parameter', function(done) {
-    var payload = {
+    nexmo.send(payload, (result) => {
+      expect(result.status).to.equal('failed')
+      done()
+    })
+  })
+  it('optional parameter', (done) => {
+    const payload = {
       to: config.fixture.to,
-      text: '[operator] test from nexmo 測試簡訊 テスト 😀 time ' + Date.now(),
+      text: `[operator] test from nexmo 測試簡訊 テスト 😀 time ${now()}`,
       options: {
-        callback: 'https://yourdimain/nexmo/callback'
+        callback: config.nexmo.options.callback
       }
     }
-    nexmo.send(payload, function(result) {
-      expect(result.status).to.equal('ok');
-      expect(result.id).to.exist;
-      done();
-    });
-  });
-  it('receipt', function(done) {
-    var payload = {
+    nexmo.send(payload, (result) => {
+      expect(result.status).to.equal('ok')
+      expect(result.id).to.exist
+      done()
+    })
+  })
+  it('receipt', (done) => {
+    const payload = {
       msisdn: '886919919919',
       to: '889989666777',
       'network-code': '46697',
@@ -52,11 +52,11 @@ describe('nexmo', function() {
       'err-code': '0',
       'message-timestamp': '2016-09-11 10:17:39'
     }
-    var result = Nexmo.receipt(payload);
-    expect(result.id).to.equal('06000000449DC552');
-    expect(result.provider).to.equal('nexmo');
-    expect(result.status).to.equal('delivered');
-    expect(result.raw).to.deep.equal(payload);
-    done();
-  });
+    const result = Nexmo.receipt(payload)
+    expect(result.id).to.equal('06000000449DC552')
+    expect(result.provider).to.equal('nexmo')
+    expect(result.status).to.equal('delivered')
+    expect(result.raw).to.deep.equal(payload)
+    done()
+  })
 })

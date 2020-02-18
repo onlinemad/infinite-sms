@@ -1,9 +1,11 @@
-global.config = require('./config.mocha.json');
+global.config = require('./config.mocha.json')
 
-before(function(done) {
-  done();
-});
+global.now = () => { return (new Date()).toLocaleString() }
 
-after(function(done) {
-  done();
-});
+before((done) => {
+  done()
+})
+
+after((done) => {
+  done()
+})
