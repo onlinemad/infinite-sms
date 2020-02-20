@@ -1,6 +1,6 @@
 {
   "name": "infinite-sms",
-  "version": "0.0.5",
+  "version": "0.1.0-alpha",
   "description": "SMS library for multi providers",
   "main": "index.js",
   "directories": {
@@ -20,14 +20,16 @@
   },
   "homepage": "https://github.com/onlinemad/infinite-sms#readme",
   "dependencies": {
-    "debug": "^2.2.0",
+    "axios": "^0.19.2",
+    "bluebird": "^3.7.2",
+    "debug": "^4.1.1",
     "iconv-lite": "^0.4.13",
     "request": "^2.74.0",
-    "require-all": "^2.0.0"
+    "require-all": "^3.0.0"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.0.2",
-    "should": "^11.1.0"
+    "chai": "^4.2.0",
+    "mocha": "^7.0.1",
+    "should": "^13.2.3"
   }
 }
