@@ -38,6 +38,12 @@ describe('ite2', async () => {
     expect(result.status).to.equal('ok')
     expect(result.id).to.exist
   })
+  it('balance', async () => {
+    let result = await ite2.balance()
+    debug('ite2 result', result)
+    expect(result.status).to.equal('ok')
+    expect(result.balance).to.exist
+  })
   it.skip('receipt', (done) => {
     const payload = {
       sms_id: '1783822',
@@ -49,11 +55,5 @@ describe('ite2', async () => {
     expect(result.status).to.equal('DELIVRD')
     expect(result.raw).to.deep.equal(payload)
     done()
-  })
-  it('balance', async () => {
-    let result = await ite2.balance()
-    debug('ite2 result', result)
-    expect(result.status).to.equal('ok')
-    expect(result.balance).to.exist
   })
 })
