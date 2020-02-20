@@ -6,6 +6,10 @@
     "UID": "uid",
     "PWD": "pws"
   },
+  "ite2": {
+    "UID": "UID",
+    "PWD": "PWD"
+  },
   "mitake": {
     "username": "username",
     "password": "password",
