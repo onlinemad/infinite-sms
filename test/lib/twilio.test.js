@@ -1,47 +1,50 @@
 const expect = require('chai').expect
+const debug = require('debug')('sms')
 
 const Twilio = require('../../index').twilio
 
 const twilio = new Twilio(config.twilio)
 
-describe('twilio', () => {
-  it('success case', (done) => {
-    const payload = {
+describe('twilio', async () => {
+  it('success case', async () => {
+    let payload = {
       to: config.fixture.to,
-      text: `[operator] test from twilio. twilio 測試簡訊. time ${now()}`
+      text: `[operator] test from twilio. twilio 測試簡訊. 😀 time ${now()}`
     }
-    twilio.send(payload, (result) => {
-      expect(result.status).to.equal('ok')
-      expect(result.id).to.exist
-      done()
-    })
+    let result = await twilio.send(payload)
+    expect(result.status).to.equal('ok')
+    expect(result.id).to.exist
   })
-  it('missing destination', (done) => {
-    const payload = {
+  it('missing destination', async () => {
+    let payload = {
       to: '',
-      text: `[operator] test from twilio. twilio 測試簡訊. time ${now()}`
+      text: `[operator] test from twilio. twilio 測試簡訊. 😀 time ${now()}`
     }
-    twilio.send(payload, (result) => {
-      expect(result.status).to.equal('failed')
-      done()
-    })
+    let result = await twilio.send(payload)
+    debug('twilio result', result)
+    expect(result.status).to.equal('failed')
   })
-  it('optional parameter', (done) => {
-    const payload = {
+  it('optional parameter', async () => {
+    let payload = {
       to: config.fixture.to,
       text: `[operator] test from nexmo 測試簡訊 テスト 😀 time ${now()}`,
       options: {
         StatusCallback: config.twilio.options.StatusCallback
       }
     }
-    twilio.send(payload, (result) => {
-      expect(result.status).to.equal('ok')
-      expect(result.id).to.exist
-      done()
-    })
+    let result = await twilio.send(payload)
+    debug('twilio result', result)
+    expect(result.status).to.equal('ok')
+    expect(result.id).to.exist
   })
-  it('receipt', (done) => {
-    const payload = {
+  it.only('balance', async () => {
+    let result = await twilio.balance()
+    debug('twilio result', result)
+    expect(result.status).to.equal('ok')
+    expect(result.balance).to.exist
+  })
+  it('receipt', () => {
+    let payload = {
       SmsSid: 'SmsSid',
       SmsStatus: 'sent',
       MessageStatus: 'sent',
@@ -51,11 +54,10 @@ describe('twilio', () => {
       From: '+123456789',
       ApiVersion: '2010-04-01'
     }
-    const result = Twilio.receipt(payload)
+    let result = Twilio.receipt(payload)
     expect(result.id).to.equal('SmsSid')
     expect(result.provider).to.equal('twilio')
     expect(result.status).to.equal('sent')
     expect(result.raw).to.deep.equal(payload)
-    done()
   })
 })
