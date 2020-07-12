@@ -37,7 +37,7 @@ describe('twilio', async () => {
     expect(result.status).to.equal('ok')
     expect(result.id).to.exist
   })
-  it.only('balance', async () => {
+  it('balance', async () => {
     let result = await twilio.balance()
     debug('twilio result', result)
     expect(result.status).to.equal('ok')
