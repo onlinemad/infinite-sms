@@ -1,9 +1,13 @@
 const expect = require('chai').expect
 
-const every8d = require('../../index').every8d
+const Every8d = require('../../index').every8d
 
-const every8d = new every8d(config.every8d)
+const every8d = new Every8d(config.every8d)
 
+/**
+ * every8d API document
+ * https://www.teamplus.tech/product/every8d-download/
+ */
 describe('every8d', () => {
   it('success case', (done) => {
     const payload = {

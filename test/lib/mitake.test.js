@@ -5,6 +5,10 @@ const Mitake = require('../../index').mitake
 
 const mitake = new Mitake(config.mitake)
 
+/**
+ * 三竹 API document
+ * https://sms.mitake.com.tw/common/index.jsp?t=1631608102452
+ */
 describe('mitake', () => {
   it('success case', async () => {
     let payload = {

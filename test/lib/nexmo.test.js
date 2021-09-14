@@ -5,6 +5,10 @@ const Nexmo = require('../../index').nexmo
 
 const nexmo = new Nexmo(config.nexmo)
 
+/**
+ * Vonage API document
+ * https://developer.nexmo.com/getting-started/overview
+ */
 describe('nexmo', async () => {
   it('success case', async () => {
     let payload = {

@@ -1,9 +1,13 @@
 const expect = require('chai').expect
 
-const kotsms = require('../../index').kotsms
+const Kotsms = require('../../index').kotsms
 
-const kotsms = new kotsms(config.kotsms)
+const kotsms = new Kotsms(config.kotsms)
 
+/**
+ * 簡訊王 API document
+ * https://www.kotsms.com.tw/index.php?selectpage=pagenews&kind=4&viewnum=238
+ */
 describe('kotsms', () => {
   it('success case', (done) => {
     const payload = {

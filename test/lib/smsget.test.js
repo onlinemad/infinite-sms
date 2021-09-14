@@ -5,6 +5,10 @@ const Smsget = require('../../index').smsget
 
 const smsget = new Smsget(config.smsget)
 
+/**
+ * SMS-GET API document
+ * https://www.sms-get.com/api_desc.php
+ */
 describe('smsget', async () => {
   it('success case', async () => {
     let payload = {
