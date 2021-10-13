@@ -49,7 +49,8 @@ describe('mitake', () => {
     expect(result.balance).to.exist
   })
   it('receipt', () => {
-    let payload = { msgid: '$0005EF6C0',
+    let payload = {
+      msgid: '$0005EF6C0',
       dstaddr: '0919919919',
       dlvtime: '20160923141411',
       donetime: '20160923141415',

@@ -25,7 +25,7 @@ describe('kotsms', () => {
       to: '+886',
       text: `[operator] test from kotsms. kotsms 測試簡訊. time ${now()}`
     }
-    kotsms.send(payload, function(result) {
+    kotsms.send(payload, function (result) {
       expect(result.status).to.equal('failed')
       done()
     })
