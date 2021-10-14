@@ -64,3 +64,31 @@ describe('smsget', async () => {
     expect(result.raw).to.deep.equal(payload)
   })
 })
+
+describe('smsget.bidirectional', async () => {
+  it('success case', async () => {
+    let payload = {
+      to: config.fixture.to,
+      text: `[operator] test for smsget 測試簡訊 テスト time ${now()}`  // SMS-GET 不支援 emoji
+    }
+    let result = await smsget.bidirectional(payload)
+    expect(result.status).to.equal('ok')
+    expect(result.id).to.exist
+  })
+})
+
+describe('smsget.bidirectional_receipt', async () => {
+  it('should parsing payload of provider webhook.', async () => {
+    let payload = {
+      content: '0919123456|1634110261249|2021-10-13 15:30:01|24%E6%B8%AC%E8%A9%A61529'
+    }
+    let result = Smsget.bidirectional_receipt(payload)
+    debug(result)
+    expect(result.id).eq('1634110261249')
+    expect(result.provider).eq('smsget')
+    expect(result.phone).eq('0919123456')
+    expect(result.content).eq('24測試1529')
+    expect(result.timestamp).eq(1634110201000)
+    expect(result.raw).deep.equal(payload)
+  })
+})
