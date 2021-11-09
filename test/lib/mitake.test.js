@@ -19,6 +19,8 @@ describe('mitake', () => {
     debug('mitake result', result)
     expect(result.status).to.equal('ok')
     expect(result.id).to.exist
+    expect(result.response).to.exist
+    expect(result.response.msgid).eq(result.id)
   })
   it.skip('missing destination', async () => {
     let payload = {

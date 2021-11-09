@@ -1,4 +1,5 @@
 const expect = require('chai').expect
+const debug = require('debug')('sms')
 
 const Every8d = require('../../index').every8d
 
@@ -17,6 +18,7 @@ describe('every8d', async () => {
     let result = await every8d.send(payload)
     expect(result.status).to.equal('ok')
     expect(result.id).to.exist
+    expect(result.response.batch).eq(result.id)
   })
   it('missing destination', async () => {
     const payload = {

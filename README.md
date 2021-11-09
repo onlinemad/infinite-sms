@@ -16,7 +16,7 @@ SMS library for multi providers
 
 ## 統一的 request payload format
 
-    var payload = {
+    let payload = {
       to: 'receiver phone number',
       text: 'message text',
       options: {
@@ -26,9 +26,10 @@ SMS library for multi providers
     
 ## 統一的 callback response format
 
-    var obj = {
+    let obj = {
       provider: 'provider',
       id: 'message id of provider',
       status: 'sending status response from provider',
+      response: 'Parsed result as JSON object'
       raw: json object of raw callback response payload
     }

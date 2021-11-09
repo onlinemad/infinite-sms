@@ -18,6 +18,8 @@ describe('twilio', async () => {
     let result = await twilio.send(payload)
     expect(result.status).to.equal('ok')
     expect(result.id).to.exist
+    expect(result.response).to.exist
+    expect(result.response.sid).eq(result.id)
   })
   it('missing destination', async () => {
     let payload = {

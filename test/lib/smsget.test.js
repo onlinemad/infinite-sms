@@ -18,6 +18,8 @@ describe('smsget', async () => {
     let result = await smsget.send(payload)
     expect(result.status).to.equal('ok')
     expect(result.id).to.exist
+    expect(result.response).to.exist
+    expect(result.response.stats).true
   })
   it('missing destination', async () => {
     let payload = {
