@@ -15,7 +15,7 @@ describe('every8d', async () => {
       to: config.fixture.to,
       text: `[operator] test from every8d. every8d 測試簡訊. time ${now()}`
     }
-    let result = await every8d.send(payload)
+    const result = await every8d.send(payload)
     expect(result.status).to.equal('ok')
     expect(result.id).to.exist
     expect(result.response.batch).eq(result.id)
@@ -25,7 +25,7 @@ describe('every8d', async () => {
       to: '',
       text: `[operator] test from nexmo. nexmo 測試簡訊. time ${now()}`
     }
-    let result = await every8d.send(payload)
+    const result = await every8d.send(payload)
     expect(result.status).to.equal('failed')
   })
 })

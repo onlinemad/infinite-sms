@@ -7,39 +7,39 @@ const ite2 = new Ite2(config.ite2)
 
 describe('ite2', async () => {
   it('success case', async () => {
-    let payload = {
+    const payload = {
       to: config.fixture.to,
       text: `[operator] test for ite2 測試簡訊 テスト 😀 time ${now()}`
     }
-    let result = await ite2.send(payload)
+    const result = await ite2.send(payload)
     debug('ite2 result', result)
     expect(result.status).to.equal('ok')
     expect(result.id).to.exist
   })
   it('missing destination', async () => {
-    let payload = {
+    const payload = {
       to: '+886',
       text: `[operator] test for ite2 測試簡訊 テスト 😀 time ${now()}`
     }
-    let result = await ite2.send(payload)
+    const result = await ite2.send(payload)
     debug('ite2 result', result)
     expect(result.status).to.equal('failed')
   })
   it('optional parameter: scheduled sms', async () => {
-    let payload = {
+    const payload = {
       to: config.fixture.to,
       text: `[operator] test for ite2 測試簡訊 テスト 😀 time ${now()}`,
       options: {
         SCHEDULETIME: (new Date(Date.now() + 1000 * 60 * 6)).toLocaleString()
       }
     }
-    let result = await ite2.send(payload)
+    const result = await ite2.send(payload)
     debug('ite2 result', result)
     expect(result.status).to.equal('ok')
     expect(result.id).to.exist
   })
   it('balance', async () => {
-    let result = await ite2.balance()
+    const result = await ite2.balance()
     debug('ite2 result', result)
     expect(result.status).to.equal('ok')
     expect(result.balance).to.exist

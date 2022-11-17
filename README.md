@@ -33,3 +33,14 @@ SMS library for multi providers
       response: 'Parsed result as JSON object'
       raw: json object of raw callback response payload
     }
+
+## 如何執行 Test case
+
+將 `test/config.mocha.sample.json` 改為 `test/config.mocha.json`
+
+編輯 `config.mocha.sample.json` 修改 `fixture.to` 改為你要測試的電話號碼（電話號碼格式為 [E.164 Numbers](https://www.twilio.com/docs/glossary/what-e164)）
+
+編輯 `config.mocha.sample.json` 修改對應供應商的帳號密碼。
+
+    DEBUG=sms mocha test/bootstrap.test.js test/lib/smsget.test.js
+
