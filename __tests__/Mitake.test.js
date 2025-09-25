@@ -5,7 +5,7 @@ import dayjs from 'dayjs'
 
 import SmsError from '../lib/SmsError.js'
 
-import { Mitake } from '../index.js'
+import Mitake from '../lib/Mitake.js'
 
 import cfg from './config.js'
 
@@ -141,6 +141,7 @@ describe('Mitake SMS provider', () => {
 
     assert.equal(result.provider, PROVIDER)
     assert.equal(result.id, '$0005EF6C0')
+    assert.equal(result.status, 'DELIVRD')
     assert.deepEqual(result.rawJson, webhookData)
   })
 })

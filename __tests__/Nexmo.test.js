@@ -5,7 +5,7 @@ import dayjs from 'dayjs'
 
 import SmsError from '../lib/SmsError.js'
 
-import { Nexmo } from '../index.js'
+import Nexmo from '../lib/Nexmo.js'
 
 import cfg from './config.js'
 
@@ -117,6 +117,7 @@ describe('nexmo (Vonage) SMS provider', () => {
     
     assert.equal(result.provider, 'nexmo')
     assert.equal(result.id, 'msg_12345')
+    assert.equal(result.status, 'delivered')
     assert.deepEqual(result.raw, webhookData)
   })
 })

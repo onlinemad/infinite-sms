@@ -5,7 +5,7 @@ import dayjs from 'dayjs'
 
 import SmsError from '../lib/SmsError.js'
 
-import { Smsget } from '../index.js'
+import Smsget from '../lib/Smsget.js'
 
 import cfg from './config.js'
 
@@ -136,6 +136,7 @@ describe('smsget SMS provider', () => {
 
     assert.equal(result.provider, PROVIDER)
     assert.equal(result.id, '1783822')
+    assert.equal(result.status, 'DELIVRD')
     assert.deepEqual(result.raw, webhookData)
   })
 })

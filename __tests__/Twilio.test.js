@@ -5,7 +5,7 @@ import dayjs from 'dayjs'
 
 import SmsError from '../lib/SmsError.js'
 
-import { Twilio } from '../index.js'
+import Twilio from '../lib/Twilio.js'
 
 import cfg from './config.js'
 
@@ -158,6 +158,7 @@ describe('twilio SMS provider', () => {
     
     assert.equal(result.provider, 'twilio')
     assert.equal(result.id, 'SM1234567890abcdef')
+    assert.equal(result.status, 'delivered')
     assert.deepEqual(result.raw, webhookData)
   })
 
