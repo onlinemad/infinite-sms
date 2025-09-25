@@ -7,16 +7,20 @@ SMS library for multi providers
 
 ## 支援的供應商
 
-* every8d
-* kotsms (簡訊王)
-* mitake (三竹)
-* nexmo
-* smsget
-* twilio
+* Mitake (三竹)
+* Nexmo
+* SMS-GET
+* Twilio
+
+## v1.0.0 Breaking Changes
+
+* callback response format 移除 status
+* callback response format response rename to rawJson
+* Smsget remove bidirectional functions
 
 ## 統一的 request payload format
 
-    let payload = {
+    const payload = {
       to: 'receiver phone number',
       text: 'message text',
       options: {
@@ -26,21 +30,20 @@ SMS library for multi providers
     
 ## 統一的 callback response format
 
-    let obj = {
+    const smsRes = {
       provider: 'provider',
       id: 'message id of provider',
-      status: 'sending status response from provider',
-      response: 'Parsed result as JSON object'
-      raw: json object of raw callback response payload
+      raw: {} // raw response from provider,
+      rawJson: {} // Parsed result as JSON object
     }
 
 ## 如何執行 Test case
 
-將 `test/config.mocha.sample.json` 改為 `test/config.mocha.json`
+將 `__tests__/config.example.js` 改為 `__tests__/config.js`
 
-編輯 `config.mocha.sample.json` 修改 `fixture.to` 改為你要測試的電話號碼（電話號碼格式為 [E.164 Numbers](https://www.twilio.com/docs/glossary/what-e164)）
+編輯 `config.js` 修改 `phoneNumber` 改為你要測試的電話號碼（電話號碼格式為 [E.164 Numbers](https://www.twilio.com/docs/glossary/what-e164)）
 
 編輯 `config.mocha.sample.json` 修改對應供應商的帳號密碼。
 
-    DEBUG=sms mocha test/bootstrap.test.js test/lib/smsget.test.js
+    NODE_DEBUG=sms pnpm run test
 

@@ -1,13 +1,17 @@
 {
   "name": "infinite-sms",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "description": "SMS library for multi providers",
+  "type": "module",
   "main": "index.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "node --test __tests__/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -20,17 +24,9 @@
   },
   "homepage": "https://github.com/onlinemad/infinite-sms#readme",
   "dependencies": {
-    "axios": "^0.27.2",
-    "bluebird": "^3.7.2",
-    "dayjs": "^1.11.6",
-    "debug": "^4.3.4",
-    "iconv-lite": "^0.6.3",
-    "request": "^2.88.2",
-    "require-all": "^3.0.0"
+    "axios": "^1.7.7",
+    "dayjs": "^1.11.13",
+    "iconv-lite": "^0.6.3"
   },
-  "devDependencies": {
-    "chai": "^4.3.7",
-    "mocha": "^10.1.0",
-    "should": "^13.2.3"
-  }
+  "devDependencies": {}
 }
