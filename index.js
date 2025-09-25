@@ -6,7 +6,7 @@ import Nexmo from './lib/Nexmo.js'
 import Smsget from './lib/Smsget.js'
 import Twilio from './lib/Twilio.js'
 
-export {
+export default {
   Every8d,
   Ite2,
   Kotsms,

@@ -14,9 +14,10 @@ SMS library for multi providers
 
 ## v1.0.0 Breaking Changes
 
-* callback response format 移除 status
-* callback response format response rename to rawJson
-* Smsget remove bidirectional functions
+* Provider response format: removed `status` field
+* Provider response format: renamed `response` to `rawJson`
+* Smsget: removed bidirectional functions
+* File naming in lib: changed to uppercase (PascalCase)
 
 ## 統一的 request payload format
 

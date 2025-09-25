@@ -1,6 +1,6 @@
 {
   "name": "infinite-sms",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "SMS library for multi providers",
   "type": "module",
   "main": "index.js",
