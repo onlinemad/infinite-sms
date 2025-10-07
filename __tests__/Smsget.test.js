@@ -10,10 +10,12 @@ import Smsget from '../lib/Smsget.js'
 import cfg from './config.js'
 
 const PROVIDER = 'smsget'
+const PROVIDER_TWOWAY = 'smsgetTwoway'
 
 const debug = debuglog('sms')
 
 const smsget = new Smsget(cfg.smsget)
+const smsgetTwoway = new Smsget(cfg.smsgetTwoway)
 
 const msg = `呼叫小黃測試簡訊 Test message send by ${PROVIDER} ${dayjs().format('HH:mm:ss')}`
 
@@ -55,6 +57,31 @@ describe('smsget SMS provider', () => {
     assert.equal(smsRes.rawJson.used, '1')
     assert.ok(smsRes.rawJson.remaining)
   })
+
+  // 使用 twoway 簡訊，真的發簡訊會扣點數，需要測試時再打開
+  test.skip('should send text to phone number', async () => {
+    const payload = {
+      to: cfg.phoneNumber.tw,
+      text: msg
+    }
+
+    const smsRes = await smsgetTwoway.send(payload)
+    debug('Smsget send result:', smsRes)
+
+    // 基本結構檢查
+    assert.equal(smsRes.provider, PROVIDER_TWOWAY)
+
+    // 檢查必要欄位存在且有意義的值
+    assert.ok(smsRes.raw && typeof smsRes.raw === 'object', 'raw should be a non-empty string')
+    assert.ok(smsRes.rawJson && typeof smsRes.rawJson === 'object', 'rawJson should be an object')
+    assert.ok(smsRes.id && typeof smsRes.id === 'string', 'id should be a non-empty string')
+
+    // 檢查具體業務邏輯
+    assert.equal(smsRes.rawJson.id, smsRes.id)
+    assert.equal(smsRes.rawJson.used, '2')
+    assert.ok(smsRes.rawJson.remaining)
+  })
+
 
   // 要到 SMS-GET 後台設定允許的 IP 才能測試
   test.skip('should throw error if IP is not allowed', async () => {
