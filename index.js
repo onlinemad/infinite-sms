@@ -2,6 +2,7 @@ import Every8d from './lib/Every8d.js'
 import Ite2 from './lib/Ite2.js'
 import Kotsms from './lib/Kotsms.js'
 import Mitake from './lib/Mitake.js'
+import MitakeShort from './lib/MitakeShort.js'
 import Nexmo from './lib/Nexmo.js'
 import Smsget from './lib/Smsget.js'
 import Twilio from './lib/Twilio.js'
@@ -11,6 +12,7 @@ export default {
   Ite2,
   Kotsms,
   Mitake,
+  MitakeShort,
   Nexmo,
   Smsget,
   Twilio,
